@@ -39,5 +39,5 @@ The dates for all functions must be in the form 'YYYY-MM-DD'.
 
 `get_historical_data_as_list` will return a list of dictionaries:
 
-	[ {'date': 'YYYY-MM-DD', 'price': 300.00}, {'date': 'YYYY-MM-DD', 'price': 301.00 }]
+	[{'date': 'YYYY-MM-DD', 'price': 300.00}, {'date': 'YYYY-MM-DD', 'price': 301.00 }]
 
