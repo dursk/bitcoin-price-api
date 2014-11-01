@@ -24,8 +24,8 @@ Coindesk offers a much richer price interface:
 
 	get_current_price(currency='USD')
 	get_past_price(date)
-	get_historical_data_as_dict(start='2014-09-01', end=None)
-	get_historical_data_as_list(start='2014-09-01', end=None
+	get_historical_data_as_dict(start='2013-09-01', end=None)
+	get_historical_data_as_list(start='2013-09-01', end=None
 
 `get_current_price` and `get_past_price` both return `Decimal` objects.
  
