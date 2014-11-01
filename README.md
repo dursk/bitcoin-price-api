@@ -33,11 +33,14 @@ Coindesk offers a much richer price interface:
 
 The dates for all functions must be in the form 'YYYY-MM-DD'.
 
-`get_historical_data_as_dict` will return a dictionary of the follwing format:
+`get_historical_data_as_dict` will return a dictionary of the following format:
 
 	{'2014-10-20': 400.00, '2014-10-21': 301.99}
 
-`get_historical_data_as_list` will return a list of dictionaries:
+Remember that these date/prices will not be in any given order.
+
+`get_historical_data_as_list` will return a list of dictionaries, correctly
+sorted by date from start to end.
 
 	[{'date': 'YYYY-MM-DD', 'price': 300.00}, {'date': 'YYYY-MM-DD', 'price': 301.00 }]
 
