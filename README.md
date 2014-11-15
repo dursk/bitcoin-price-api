@@ -8,6 +8,12 @@ This module will provide a unified way of getting price data from various
 exchanges which have publicly available API's, as well as a unified
 representation of that data rather than exchange specific ones.
 
+### Quick Guide
+
+        >>> from exchanges import bitfinex
+        >>> bitfinex.get_current_price()
+        Decimal('371.17')
+
 ### Bitstamp, Bitfinex, OKCoin
 
 All expose the interface below:
