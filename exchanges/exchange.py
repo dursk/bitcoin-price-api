@@ -2,22 +2,24 @@ from helpers import get_datetime, get_response
 from decimal import Decimal
 
 class Exchange(object):
-    @classmethod
-    def resolve_simple_api_call(cls, url, attrs):
-        resp = get_response(url)
+    def resolve_api_call(self, url=None, attrs=[], key=None):
+        url = url if url else self.api_url
+
+        json = get_response(url)
+
+        if key:
+            attrs = self.api_map[key]
+
         attrs = attrs if isinstance(attrs, list) else [attrs]
         for attr in attrs:
-            resp = resp[attr]
-        return resp
+            json = json[attr]
+        return json
 
-    @classmethod
-    def get_current_price(cls):
-        return Decimal(cls.resolve_simple_api_call(cls.Meta.api_url, cls.Meta.api_map['price']))
+    def get_current_price(self):
+        return Decimal(self.resolve_api_call(key='price'))
 
-    @classmethod
     def get_current_bid(cls):
-        return Decimal(cls.resolve_simple_api_call(cls.Meta.api_url, cls.Meta.api_map['bid']))
+        return Decimal(self.resolve_api_call(key='bid'))
 
-    @classmethod
     def get_current_ask(cls):
-        return Decimal(cls.resolve_simple_api_call(cls.Meta.api_url, cls.Meta.api_map['ask']))
+        return Decimal(self.resolve_api_call(key='ask'))
