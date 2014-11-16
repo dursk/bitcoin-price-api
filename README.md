@@ -17,7 +17,7 @@ representation of that data rather than exchange specific ones.
 ### Dependencies
 
 The only dependency is on the `requests` library. You can either
-do `pip install requests` or `pip install requirements.txt` inside the
+do `pip install requests` or `pip install -r requirements.txt` inside the
 directory.
 
 ### Bitstamp, Bitfinex, OKCoin, Huobi
