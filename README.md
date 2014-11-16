@@ -20,7 +20,7 @@ The only dependency is on the `requests` library. You can either
 do `pip install requests` or `pip install requirements.txt` inside the
 directory.
 
-### Bitstamp, Bitfinex, OKCoin
+### Bitstamp, Bitfinex, OKCoin, Huobi
 
 All expose the interface below:
 
@@ -29,6 +29,8 @@ All expose the interface below:
 	get_current_ask()
 
 which will return a `Decimal` object.
+Note that all exchanges return values in USD, with the
+exception of Huobi which returns CNY.
 
 ### Coindesk
 
