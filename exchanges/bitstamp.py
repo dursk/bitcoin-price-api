@@ -1,19 +1,17 @@
-from decimal import Decimal
-from helpers import get_datetime, get_response
+from exchanges.base import Exchange
 
-TICKER_URL = 'https://bitstamp.net/api/ticker/'
+class Bitstamp(Exchange):
 
-def get_current_price():
-    data = get_response(TICKER_URL)
-    price = data['last']
-    return Decimal(price)
+    TICKER_URL = 'https://bitstamp.net/api/ticker/'
 
-def get_current_bid():
-    data = get_response(TICKER_URL)
-    price = data['bid']
-    return Decimal(price)
+    @classmethod
+    def _current_price_extractor(cls, data):
+        return data.get('last')
 
-def get_current_ask():
-    data = get_response(TICKER_URL)
-    price = data['ask']
-    return Decimal(price)
+    @classmethod
+    def _current_bid_extractor(cls, data):
+        return data.get('bid')
+
+    @classmethod
+    def _current_ask_extractor(cls, data):
+        return data.get('ask')

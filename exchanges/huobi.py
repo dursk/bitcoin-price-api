@@ -1,19 +1,18 @@
-from decimal import Decimal
-from helpers import *
+from exchanges.base import Exchange
 
-TICKER_URL = 'https://market.huobi.com/staticmarket/ticker_btc_json.js'
 
-def get_current_price():
-        data = get_response(TICKER_URL)
-        price = data['ticker']['last']
-        return Decimal(price)
+class Huobi(Exchange):
 
-def get_current_bid():
-        data = get_response(TICKER_URL)
-        price = data['ticker']['buy']
-        return Decimal(price)
+    TICKER_URL = 'https://market.huobi.com/staticmarket/ticker_btc_json.js'
 
-def get_current_ask():
-        data = get_response(TICKER_URL)
-        price = data['ticker']['sell']
-        return Decimal(price)
+    @classmethod
+    def _current_price_extractor(cls, data):
+        return data.get('ticker', {}).get('last')
+
+    @classmethod
+    def _current_bid_extractor(cls, data):
+        return data.get('ticker', {}).get('buy')
+
+    @classmethod
+    def _current_ask_extractor(cls, data):
+        return data.get('ticker', {}).get('sell')
