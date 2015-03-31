@@ -22,7 +22,7 @@ directory.
 
 ### Bitstamp, Bitfinex, OKCoin, Huobi, and Coinapult
 
-All these classes expose the interface below:
+All of these classes expose the interface below:
 
     get_current_price()
     get_current_bid()
