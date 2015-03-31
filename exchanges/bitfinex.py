@@ -1,20 +1,18 @@
-from decimal import Decimal
-from helpers import *
-import requests
+from exchanges.base import Exchange
 
-TICKER_URL = 'https://api.bitfinex.com/v1/pubticker/btcusd'
 
-def get_current_price():
-    data = get_response(TICKER_URL)
-    price = data['last_price']
-    return Decimal(price)
+class Bitfinex(Exchange):
 
-def get_current_bid():
-    data = get_response(TICKER_URL)
-    price = data['bid']
-    return Decimal(price)
+    TICKER_URL = 'https://api.bitfinex.com/v1/pubticker/btcusd'
 
-def get_current_ask():
-    data = get_response(TICKER_URL)
-    price = data['ask']
-    return Decimal(price)
+    @classmethod
+    def _current_price_extractor(cls, data):
+        return data.get('last_price')
+
+    @classmethod
+    def _current_bid_extractor(cls, data):
+        return data.get('bid')
+
+    @classmethod
+    def _current_ask_extractor(cls, data):
+        return data.get('ask')

@@ -10,8 +10,8 @@ representation of that data rather than exchange specific ones.
 
 ### Quick Guide
 
-        >>> from exchanges import bitfinex
-        >>> bitfinex.get_current_price()
+        >>> from exchanges.bitfinex import Bitfinex
+        >>> Bitfinex.get_current_price()
         Decimal('371.17')
 
 ### Dependencies
@@ -20,9 +20,9 @@ The only dependency is on the `requests` library. You can either
 do `pip install requests` or `pip install -r requirements.txt` inside the
 directory.
 
-### Bitstamp, Bitfinex, OKCoin, Huobi
+### Bitstamp, Bitfinex, OKCoin, Huobi, and Coinapult
 
-All expose the interface below:
+All of these classes expose the interface below:
 
     get_current_price()
     get_current_bid()
@@ -32,9 +32,14 @@ which will return a `Decimal` object.
 Note that all exchanges return values in USD, with the
 exception of Huobi which returns CNY.
 
+Coinapult is special in that you can specify the currency for the above
+three methods.
+
+    get_current_price(currency='EUR')
+
 ### Coindesk
 
-Coindesk offers a much richer price interface:
+The Coindesk class offers a much richer price interface:
 
     get_current_price(currency='USD')
     get_past_price(date)
