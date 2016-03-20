@@ -1,0 +1,5 @@
+include setup.py
+include *.in *.md *.txt
+include xbtexchanges/*.py
+
+
