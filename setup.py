@@ -8,7 +8,7 @@ from setuptools import (
 
 setup(
     name="bitcoin-price-api",
-    version = "0.0.1",
+    version = "0.0.2",
     author="Matthew Madurski",
     author_email='madurskimr@gmail.com',
     url="https://github.com/dursk/bitcoin-price-api",
@@ -16,7 +16,7 @@ setup(
     long_description="""Price API's for bitcoin exchanges""",
     license="MIT",
     packages=['exchanges'],
-    install_requires = ["requests"],
+    install_requires = ["requests", "python-dateutil"],
     scripts = ['bitcoin-price.py'],
     use_2to3 = True
 )
