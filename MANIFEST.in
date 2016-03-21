@@ -1,4 +1,4 @@
-include setup.py
+include setup.py bitcoin-price.py
 include *.in *.md *.txt
 include exchanges/*.py
 

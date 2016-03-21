@@ -17,6 +17,7 @@ setup(
     license="MIT",
     packages=['exchanges'],
     install_requires = ["requests"],
+    scripts = ['bitcoin-price.py'],
     use_2to3 = True
 )
                                 

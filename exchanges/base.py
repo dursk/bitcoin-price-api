@@ -1,6 +1,6 @@
 from decimal import Decimal
 
-from helpers import get_response, get_datetime
+from exchanges.helpers import get_response, get_datetime
 
 
 class Exchange(object):
