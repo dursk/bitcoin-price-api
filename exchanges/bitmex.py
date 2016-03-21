@@ -4,9 +4,11 @@ from decimal import Decimal
 import dateutil.parser
 
 class Bitmex(FuturesExchange):
-    @classmethod
-    def getData(cls):
-        data = get_response('https://www.bitmex.com:443/api/v1/instrument/active')
+    TICKER_URL = 'https://www.bitmex.com:443/api/v1/instrument/active'
+    def __init__(self, *args, **kwargs):
+        super(Bitmex,self).__init__(*args, **kwargs)
+    def get_data(self):
+        self.refresh()
         symbols = []
         dates = []
         bids = []
@@ -14,7 +16,7 @@ class Bitmex(FuturesExchange):
         last = []
         contract = []
         for contracttype in ["XBU", "XBT"]:
-            for i in data:
+            for i in self.data:
                 if i['rootSymbol'] == contracttype and i['buyLeg'] == "":
                     dates.append(date_stamp(dateutil.parser.parse(i['expiry'])))
                     symbols.append(i['symbol'])
@@ -31,4 +33,4 @@ class Bitmex(FuturesExchange):
             }
 
 if __name__ == "__main__":
-    print(Bitmex().getData())
+    print(Bitmex().get_data())

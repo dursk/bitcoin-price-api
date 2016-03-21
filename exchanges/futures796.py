@@ -11,14 +11,16 @@ def weekly_expiry():
     return d
 
 class Futures796(FuturesExchange):
-    @classmethod
-    def getData(cls):
-        data = requests.get("http://api.796.com/v3/futures/ticker.html?type=weekly").json()['ticker']
-        print(data)
+    TICKER_URL = "http://api.796.com/v3/futures/ticker.html?type=weekly"
+    def __init__(self, *args, **kwargs):
+        super(Futures796,self).__init__(*args, **kwargs)
+    def get_data(self):
+        self.refresh()
+        data = self.data['ticker']
         return {'dates':[date_stamp(weekly_expiry())],
                           "contract" : ["XBT"],
                           "bids" : [ Decimal(data['buy'])],
                           "asks" : [ Decimal(data['sell'])],
                           "last" : [ Decimal(data['last'])]}
 if __name__ == "__main__":
-    print(Futures796().getData())
+    print(Futures796().get_data())

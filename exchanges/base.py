@@ -28,42 +28,46 @@ def date_stamp(d):
 def time_stamp(d):
     return d.strftime("%H:%M:%S")
 
-
-class Exchange(object):
-
+class ExchangeBase(object):
     TICKER_URL = None
+    def __init__(self, *args, **kwargs):
+        self.data = None
+        self.ticker_url = self.TICKER_URL
+    def get_data(self):
+        if self.data == None:
+            self.refresh()
+    def refresh(self):
+        self.data = get_response(self.ticker_url)
 
-    @classmethod
-    def _current_price_extractor(cls, data):
+class Exchange(ExchangeBase):
+    def __init__(self, *args, **kwargs):
+        super(Exchange,self).__init__(*args, **kwargs)
+    def _current_price_extractor(self, data):
         raise NotImplementedError
 
-    @classmethod
-    def _current_bid_extractor(cls, data):
+    def _current_bid_extractor(self, data):
         raise NotImplementedError
 
-    @classmethod
-    def _current_ask_extractor(cls, data):
+    def _current_ask_extractor(self, data):
         raise NotImplementedError
 
-    @classmethod
-    def get_current_price(cls):
-        data = get_response(cls.TICKER_URL)
-        price = cls._current_price_extractor(data)
+    def get_current_price(self):
+        self.get_data()
+        price = self._current_price_extractor(self.data)
         return Decimal(price)
 
-    @classmethod
-    def get_current_bid(cls):
-        data = get_response(cls.TICKER_URL)
-        price = cls._current_bid_extractor(data)
+    def get_current_bid(self):
+        self.get_data()
+        price = self._current_bid_extractor(self.data)
         return Decimal(price)
 
-    @classmethod
     def get_current_ask(cls):
-        data = get_response(cls.TICKER_URL)
-        price = cls._current_ask_extractor(data)
+        self.get_data()
+        price = self._current_ask_extractor(self.data)
         return Decimal(price)
 
-class FuturesExchange(object):
-    @classmethod
+class FuturesExchange(ExchangeBase):
+    def __init__(self, *args, **kwargs):
+        super(FuturesExchange,self).__init__(*args, **kwargs)
     def get_data(cls):
         raise NotImplementedError

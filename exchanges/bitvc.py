@@ -36,8 +36,9 @@ expiry['next_week'] = weekly_expiry() + datetime.timedelta(7)
 expiry['quarter'] = quarter_expiry()
 
 class BitVc(FuturesExchange):
-    @classmethod
-    def getData(cls):
+    def __init__(self, *args, **kwargs):
+        super(BitVc,self).__init__(*args, **kwargs)
+    def get_data(self):
         dates= []
         bids = []
         asks = []
@@ -57,4 +58,4 @@ class BitVc(FuturesExchange):
                 "contract" : contract}      
     
 if __name__ == "__main__":
-    print(BitVc().getData())
+    print(BitVc().get_data())
