@@ -9,16 +9,16 @@ class Kraken(Exchange):
     def get_current_price(cls, pair="XXBTZUSD"):
         data = get_response(cls.TICKER_URL %  pair)
         price = data["result"][pair][-1][0]
-        return Decimal(price)
+        return Decimal(str(price))
 
     @classmethod
     def get_current_bid(cls, pair="XXBTZUSD"):
         data = get_response(cls.DEPTH_URL % pair)
         price = data["result"][pair]["bids"][0][0]
-        return Decimal(price)
+        return Decimal(str(price))
 
     @classmethod
     def get_current_ask(cls, pair="XXBTZUSD"):
         data = get_response(cls.DEPTH_URL % pair)
         price = data["result"][pair]["asks"][0][0]
-        return Decimal(price)
+        return Decimal(str(price))
