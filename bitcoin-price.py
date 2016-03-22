@@ -6,9 +6,12 @@ from exchanges.kraken import Kraken
 from exchanges.bitmex import Bitmex
 from exchanges.bitvc import BitVc
 from exchanges.futures796 import Futures796
+from exchanges import get_exchange
 
 price = Bitfinex().get_current_price()
 print(price)
+
+print(get_exchange("bitfinex").get_current_price())
 
 price = Poloniex().get_current_price()
 print(price)
