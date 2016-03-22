@@ -21,10 +21,9 @@ class OKCoin(Exchange):
     def _current_ask_extractor(cls, data):
         return data.get('ticker', {}).get('sell')
 
-class OkCoinFutures(FuturesExchange):
-    def __init__(self, *args, **kwargs):
-        super(OkCoinFutures,self).__init__(*args, **kwargs)
-    def get_data(self):
+class OKCoinFutures(Exchange):
+    @classmethod
+    def getData(cls):
         symbols = []
         dates = []
         bids = []
@@ -54,4 +53,4 @@ class OkCoinFutures(FuturesExchange):
             }
 
 if __name__ == "__main__":
-    print(OkCoinFutures().get_data())
+    print(OKCoinFutures().getData())
