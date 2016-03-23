@@ -22,5 +22,3 @@ class Futures796(FuturesExchange):
                           "bids" : [ Decimal(data['buy'])],
                           "asks" : [ Decimal(data['sell'])],
                           "last" : [ Decimal(data['last'])]}
-if __name__ == "__main__":
-    print(Futures796().get_data())

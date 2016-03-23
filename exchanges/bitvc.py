@@ -55,7 +55,4 @@ class BitVc(FuturesExchange):
                 "bids" : [ Decimal(str(x)) for x in bids ],
                 "asks" : [ Decimal(str(x)) for x in asks ],
                 "last" : [ Decimal(str(x)) for x in last ],
-                "contract" : contract}      
-    
-if __name__ == "__main__":
-    print(BitVc().get_data())
+                "contract" : contract}

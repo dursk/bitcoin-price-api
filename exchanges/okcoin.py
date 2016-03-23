@@ -51,6 +51,3 @@ class OKCoinFutures(Exchange):
             "asks" : [ Decimal(str(x)) for x in asks ],
             "last" : [ Decimal(str(x)) for x in last ]
             }
-
-if __name__ == "__main__":
-    print(OKCoinFutures().getData())
