@@ -1,5 +1,6 @@
 from exchanges.base import Exchange
 
+
 class Bitstamp(Exchange):
 
     TICKER_URL = 'https://bitstamp.net/api/ticker/'

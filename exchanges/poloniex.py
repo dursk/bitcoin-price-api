@@ -7,12 +7,12 @@ class Poloniex(Exchange):
 
     @classmethod
     def _current_price_extractor(cls, data):
-        return data.get("USDT_BTC").get('last')
+        return data.get('USDT_BTC').get('last')
 
     @classmethod
     def _current_bid_extractor(cls, data):
-        return data.get("USDT_BTC").get('highestBid')
+        return data.get('USDT_BTC').get('highestBid')
 
     @classmethod
     def _current_ask_extractor(cls, data):
-        return data.get("USDT_BTC").get('lowestAsk')
+        return data.get('USDT_BTC').get('lowestAsk')
