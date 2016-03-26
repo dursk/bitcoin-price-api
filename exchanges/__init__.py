@@ -8,7 +8,7 @@ from exchanges.huobi import Huobi
 from exchanges.kraken import Kraken
 from exchanges.okcoin import OKCoin, OKCoinFutures
 from exchanges.poloniex import Poloniex
-
+from exchanges.bravenewcoin import BraveNewCoin
 
 exchange_list = {
     'bitfinex' : Bitfinex,
@@ -21,15 +21,12 @@ exchange_list = {
     'kraken' : Kraken,
     'okcoin' : OKCoin,
     'okcoin_futures' : OKCoinFutures,
-    'poloniex' : Poloniex
+    'poloniex' : Poloniex,
+    'bravenewcoin' : BraveNewCoin
 }
-
 
 def get_exchange(s, *args, **kwargs):
     if s not in exchange_list:
         raise RuntimeError
     else:
         return exchange_list[s](*args, **kwargs)
-
-
-
