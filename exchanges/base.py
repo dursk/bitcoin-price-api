@@ -46,9 +46,10 @@ class ExchangeBase(object):
         if self.data == None:
             self.refresh()
 
-    def refresh(self):
+    def refresh(self, callback=None, client_data=None):
         self.data = get_response(self.ticker_url)
-
+        if callback is not None:
+            callback(self, client_data)
 
 class Exchange(ExchangeBase):
 
