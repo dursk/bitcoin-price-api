@@ -22,15 +22,11 @@ exchange_list = {
     'okcoin' : OKCoin,
     'okcoin_futures' : OKCoinFutures,
     'poloniex' : Poloniex,
-    "bravenewcoin" : BraveNewCoin
+    'bravenewcoin' : BraveNewCoin
 }
-
 
 def get_exchange(s, *args, **kwargs):
     if s not in exchange_list:
         raise RuntimeError
     else:
         return exchange_list[s](*args, **kwargs)
-
-
-
