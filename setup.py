@@ -8,7 +8,7 @@ from setuptools import (
 
 setup(
     name='bitcoin-price-api',
-    version = '0.0.3',
+    version = '0.0.4',
     author='Matthew Madurski',
     author_email='madurskimr@gmail.com',
     url='https://github.com/dursk/bitcoin-price-api',
