@@ -77,7 +77,7 @@ class Exchange(ExchangeBase):
         price = self._current_bid_extractor(self.data)
         return Decimal(price)
 
-    def get_current_ask(cls):
+    def get_current_ask(self):
         self.get_data()
         price = self._current_ask_extractor(self.data)
         return Decimal(price)
