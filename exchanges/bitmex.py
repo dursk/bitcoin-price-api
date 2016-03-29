@@ -10,7 +10,7 @@ class Bitmex(FuturesExchange):
 
     TICKER_URL = 'https://www.bitmex.com:443/api/v1/instrument/active'
 
-    def get_data(self):
+    def get_current_data(self):
         self.refresh()
         symbols = []
         dates = []

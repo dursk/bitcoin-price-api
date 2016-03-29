@@ -46,7 +46,7 @@ expiry['quarter'] = quarter_expiry()
 class BitVc(FuturesExchange):
     def __init__(self, *args, **kwargs):
         super(BitVc,self).__init__(*args, **kwargs)
-    def get_data(self):
+    def get_current_data(self):
         dates= []
         bids = []
         asks = []

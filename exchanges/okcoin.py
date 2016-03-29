@@ -28,7 +28,7 @@ class OKCoin(Exchange):
 class OKCoinFutures(Exchange):
 
     @classmethod
-    def get_data(cls):
+    def get_current_data(cls):
         symbols = []
         dates = []
         bids = []
