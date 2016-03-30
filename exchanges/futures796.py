@@ -19,7 +19,7 @@ class Futures796(FuturesExchange):
 
     TICKER_URL = 'http://api.796.com/v3/futures/ticker.html?type=weekly'
 
-    def get_data(self):
+    def get_current_data(self):
         self.refresh()
         data = self.data['ticker']
         return {
