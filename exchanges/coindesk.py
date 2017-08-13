@@ -11,7 +11,7 @@ class CoinDesk(object):
             currency
         )
         data = get_response(url)
-        price = data['bpi'][currency]['rate']
+        price = data['bpi'][currency]['rate_float']
         return Decimal(price)
 
     @classmethod
